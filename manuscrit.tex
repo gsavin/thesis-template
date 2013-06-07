@@ -1,0 +1,83 @@
+\documentclass[
+a4paper,
+11pt,
+twoside,
+onecolumn,
+openright,      % les chapitre commencent sur la page de droite
+shotrims,       % affiche des trucs en plus en bordure
+leqno,          % numéro des équation à droite
+%flen,          % équation alignées à gauche
+%openbib,       % chaque partie d'une ref sur une ligne
+final   % bonne qualité (lent)
+        % OU
+%draft,  % mauvaise qualité (rapide)
+%,printercorrection%
+]{memoir}
+
+%
+% Active les annotations dans la marge.
+% Supprimer l'option 'notes' pour faire disparaitre les notes.
+%
+\usepackage[notes]{macros}
+
+\begin{document}
+
+%
+% Informations
+%
+\title{UN SUPER TITRE}
+\date{le plus tôt possible}
+\author{VOTRE NOM}
+
+\frontmatter
+\include{titre}
+
+%-------------------------------------------------------------------
+%                          remerciements
+%-------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------
+%                            dédicaces
+%-------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------
+%                  ecriture de `Chapitre' et `Partie' 
+%                      dans la table des matieres
+%-------------------------------------------------------------------
+
+\dominitoc
+\tableofcontents
+\mtcaddchapter[]
+\clearpage
+\listoffigures
+\mtcaddchapter[]
+\clearpage
+
+\mainmatter
+
+%-------------------------------------------------------------------
+%                            Contenu
+%-------------------------------------------------------------------
+
+\input{Part1-exemple}
+
+%-------------------------------------------------------------------
+%                            Annexes (fichier `appendix.tex`)
+%-------------------------------------------------------------------
+
+\input{appendix}
+
+\backmatter
+
+%-------------------------------------------------------------------
+%                       Bibliographie & Index
+%-------------------------------------------------------------------
+
+\part{Bibliographie et index}
+
+\include{bibliographie}
+\include{index}
+
+\end{document}

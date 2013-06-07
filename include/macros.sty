@@ -1,0 +1,200 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{macros}
+
+\let\subcaption\relax
+\let\subfloat\relax
+
+\usepackage{caption}
+\usepackage[font=footnotesize]{subcaption}
+
+\let\captioncaption\caption
+\usepackage{hyperref}
+\let\caption\captioncaption
+
+%
+% Couleurs
+\usepackage{setcolor}
+%
+
+%
+% PGF / TikZ
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows,shapes}
+\usepgfmodule{oo}
+%
+
+\usepackage[tight,french]{minitoc}
+ \mtcsettitle{minitoc}{}
+ \mtcsetrules{*}{off}
+ \mtcsetdepth{minitoc}{2}
+
+% In preamble (at least the \newlength line)
+%\newlength{\subfigheight}
+%\setlength{\subfigheight}{1in}
+
+%\usepackage[francais]{layout}
+\newenvironment{changemargin}[2]{\begin{list}{}{%
+%\setlength{\topsep}{0pt}%
+%\setlength{\leftmargin}{0pt}%
+%\setlength{\rightmargin}{0pt}%
+%\setlength{\listparindent}{\parindent}%
+%\setlength{\itemindent}{\parindent}%
+%\setlength{\parsep}{0pt plus 1pt}%
+\addtolength{\leftmargin}{#1}%
+\addtolength{\rightmargin}{#2}%
+}\item }{\end{list}}
+
+\usepackage{etex}
+
+\usepackage[french,lined,ruled,linesnumbered,nofillcomment]{algorithm2e}
+\usepackage{placeins}
+%\usepackage[french]{varioref} 
+\usepackage{graphicx}
+\usepackage[francais]{babel}
+%\usepackage{aeguill}
+%\usepackage[utf8]{inputenc}
+%\usepackage[french]{varioref}
+\usepackage{amsfonts}
+\usepackage{picins}
+\usepackage{wrapfig}
+
+%
+% Bibliographie
+\usepackage{multibib}
+\newcites{perso}{Publications}
+%
+
+%
+% Meta
+\usepackage{setmeta}
+%
+
+\setlength{\epigraphwidth}{.2\textwidth}
+%\setlength{\epigraphrule}{.3\p@}
+\setlength{\epigraphrule}{0\p@}
+
+
+%
+% Style
+\usepackage{setstyle}
+%
+
+%
+% Marges
+\usepackage{setmargin}
+%
+
+
+%\usepackage{amsmath,thm-patch,thm-listof,thm-kv}
+\usepackage{amsmath,thmtools}
+\renewcommand{\listtheoremname}{Liste des définitions}
+
+
+
+
+%%%%%%%%%%% Evironnement pour faire des définitions
+%\usepackage{amsmath,amsthm}
+%\newtheoremstyle{break}
+%  {\topsep}%   Space before theorem
+%  {\topsep}%   Space after theorem
+%  {}%  Body font. \itshare par défaut 
+%  {}%          Indent amount (empty = no indent, \parindent = para indent)
+%  {\bfseries}% Thm head font   
+%  {~}%         Punctuation after thm head
+%  { }%  Space after thm head (\newline = linebreak)
+%  {\thmname{#1}\thmnumber{ #2}\thmnote{. \textit{#3}}}% Thm head spec
+%\theoremstyle{break}
+%\newtheorem{_definition}{Définition}
+
+\declaretheorem[title=Définition,style=break]{_definition}
+
+
+
+\newenvironment{definition}[2]
+	{
+		\begin{center}
+		\begin{minipage}{0.9\linewidth}
+		\begin{_definition}[\textsc{#1}]~{\newline}
+		\noindent}
+	{
+		\end{_definition}
+		\end{minipage}
+		\end{center}
+	}
+
+%
+% Environnement pour faire des théorèmes...
+\declaretheorem[title=Théorème]{thm_}
+\declaretheorem[title=Démonstration]{proof}
+\declaretheorem[]{remarque}
+%
+
+%
+% Numéros de chapitres en français 
+\usepackage{frenchchapter}
+%
+
+\usepackage{listings}
+   \lstset{
+	language=java,
+	%numberstyle=\tiny,
+	basicstyle=\small\sffamily,
+	keywordstyle=\color{gray}\bfseries,
+	identifierstyle=\color{black!70!white}\bfseries,
+	stringstyle=\color{olive},
+	%numbersstyle=\color{gray},
+	commentstyle=\color{gray},
+	backgroundcolor=\color{white},
+	tabsize=3,
+	frame=leftline,
+	framerule=2pt,
+	rulecolor=\color{niceblue},
+	showspaces=false,
+	showstringspaces=false,
+	numbers=left,
+	%showtabs=true,
+	stepnumber=1,
+	numbersep=10pt
+}
+	
+\pgfdeclareimage[width=15mm]{todo}{figures/todo}
+\newcommand{\todo}[1]{\noindent\tikzpicture\node(t){\pgfuseimage{todo}};\node[anchor=west,color=red,font={\bfseries}]at(t.east){#1};\endtikzpicture}
+\newcommand{\achanger}[1]{\textcolor{red}{!!#1!!}}
+
+%
+% Fonts
+\usepackage{setfont}
+%
+
+%
+% Index
+\usepackage{makeidx}
+\makeindex
+%
+
+%
+% Symbôles
+\usepackage{localsymbol}
+%
+
+%
+% Chargements des images
+\usepackage{loadimages}
+%
+
+%
+% Chargements des tables
+\usepackage{localtables}
+%
+
+\def\largeparsep{~}
+
+\def\todofig{\tikzpicture\node[font={\Huge\exoblackfont},rotate=45]{TODO};\endtikzpicture}
+
+\newif\ifdisplaynotes
+\newcommand{\notes}[1]{\ifdisplaynotes\marginpar{\footnotesize\color{NotesColor} #1}\fi}
+
+\DeclareOption{notes}{\displaynotestrue}
+\ProcessOptions\relax
+
+\endinput

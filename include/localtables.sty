@@ -1,0 +1,29 @@
+%
+% Commandes :
+%
+
+\usepackage{array}
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}m{#1}}
+
+\makeatletter
+
+\newcommand{\declaretable}[3]{%
+\expandafter\def\csname table@#1@title\endcsname{#3}%
+\expandafter\def\csname table@#1@content\endcsname{#2}}
+
+\newcommand{\usetable}[1]{%
+\begin{table}\caption{\label{table:#1}\csname table@#1@title\endcsname}\input{\csname table@#1@content\endcsname}\end{table}}
+
+\newcommand{\tableref}[1]{\ref{table:#1}}
+
+\makeatother
+
+\newcommand{\tchlA}[1]{\textcolor{TableHL1}{#1}}
+\newcommand{\tchlB}[1]{\textcolor{TableHL2}{#1}}
+\newcommand{\tchlC}[1]{\textcolor{TableHL3}{#1}}
+
+%
+% Déclaration des tables :
+%
+
+\declaretable{centralities}{tables/centralities.table}{Comparaison des différentes centralités pour les graphes $G_1$ et $G_2$. Les valeurs ont été normalisées afin de permettre la comparaison. $\rightarrow$ symbolise le degré sortant, $\leftarrow$ le degré entrant.}
