@@ -13,6 +13,8 @@ following command to check for tex-live dependencies :
 Compilation
 -------------------------------------------------------------------------------
 
+On a Debian based OS (Debian, Ubuntu):
+
 Use the following command to compil your document :
 
    ./make.sh
@@ -20,6 +22,8 @@ Use the following command to compil your document :
 You can use the `clean` command to remove all temporary files
 
   ./make.sh clean
+
+On a Windows environment, you can use, in the same way, the PowerShell script "make.ps1" instead of the "make.sh".
 
 Images
 -------------------------------------------------------------------------------
