@@ -27,6 +27,9 @@ switch ($choice) {
 		}
 
 		makeindex $choice
+
+		xelatex $opts "$choice.tex"
+		xelatex $opts "$choice.tex"
     }
 }
 
